@@ -2,6 +2,8 @@
 # Modify：sudojia
 FROM alpine:3.12
 
+WORKDIR /AutoTaskScript
+
 LABEL AUTHOR="sudojia" \
         VERSION=1.0.0
 
@@ -15,17 +17,13 @@ RUN set -ex \
         && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
         && echo "Asia/Shanghai" > /etc/timezone
 
-RUN git clone ${REPO_URL} /AutoTaskScript \
-        && cd /AutoTaskScript \
+RUN git clone ${REPO_URL} . \
         && npm install \
-        && cd src \
-        && mkdir logs \
-        && for dir in client other public web wx_mini; do mkdir -p logs/$dir; done
+        && mkdir -p src/logs \
+        && for dir in client other public web wx_mini; do mkdir -p src/logs/$dir; done
 
 RUN cp /AutoTaskScript/docker/docker_entrypoint.sh /usr/local/bin \
         && chmod +x /usr/local/bin/docker_entrypoint.sh
-
-WORKDIR /AutoTaskScript
 
 ENTRYPOINT ["docker_entrypoint.sh"]
 

@@ -1,6 +1,8 @@
+# Base：Akira <e.akimoto.akira@gmail.com>
+# Modify：sudojia
 FROM alpine:3.12
 
-LABEL AUTHOR="none" \
+LABEL AUTHOR="sudojia" \
         VERSION=1.0.0
 
 ENV DEFAULT_LIST_FILE=crontab_list.sh \

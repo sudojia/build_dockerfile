@@ -18,9 +18,8 @@ RUN set -ex \
         && echo "Asia/Shanghai" > /etc/timezone
 
 RUN git clone ${REPO_URL} . \
-        && npm install \
-        && mkdir -p src/logs \
-        && for dir in client other public web wx_mini; do mkdir -p src/logs/$dir; done
+    && npm install \
+    && mkdir -p src/logs/client src/logs/other src/logs/public src/logs/web src/logs/wx_mini
 
 RUN cp /AutoTaskScript/docker/docker_entrypoint.sh /usr/local/bin \
         && chmod +x /usr/local/bin/docker_entrypoint.sh

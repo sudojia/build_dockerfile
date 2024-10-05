@@ -8,7 +8,8 @@ LABEL AUTHOR="sudojia" \
 # 设置工作目录为 /AutoTaskScript
 WORKDIR /AutoTaskScript
 
-# 设置环境变量，用于配置默认的定时文件、合并类型和脚本仓库地址
+# 设置环境变量
+# 用于配置默认的定时文件、合并类型（append：追加默认定时任务、overwrite：自定义任务）和脚本仓库地址
 ENV DEFAULT_LIST_FILE=crontab_list.sh \
         CUSTOM_LIST_MERGE_TYPE=append \
         REPO_URL=https://github.com/sudojia/AutoTaskScript
